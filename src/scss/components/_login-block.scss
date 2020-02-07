@@ -2,19 +2,22 @@
     display: flex;
     justify-content: center;
     form {
+        background-color: $white;
+        padding: 3rem;
         border-radius: 4px;
+        box-shadow: 0 0 4px $brand-secondary;
         color: $brand;
         .form-header {
             font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 4.5rem;
             user-select: none;
         }
         .form-set {
             display: grid;
             margin: 10px 0;
             label {
-                margin-bottom: .05rem;
+                margin-bottom: .15rem;
                 user-select: none;
             }
             input {
@@ -32,10 +35,11 @@
         }
         .form-action {
             display: grid;
-            margin-top: 2rem;
+            margin-top: 3rem;
             text-align: center;
             button {
-                padding: 0.25rem 1rem;
+                background-color: $brand-fifth;
+                padding: 0.5rem 1.75rem;
                 margin: auto;
                 border: 1px solid $brand-third;
                 border-radius: 3px;
