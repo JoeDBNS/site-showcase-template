@@ -1,0 +1,42 @@
+html, body, main {
+	font-family: Monospace;
+	position: relative;
+    width: 100%;
+    margin: 0;
+	font-weight: 300;
+	color: $black;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: $brand-forth;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 3rem auto 0 12rem;
+    grid-template-areas:
+        "header header header header"
+        "main main main main"
+        ". . . ."
+        "footer footer footer footer";
+    align-content: space-between;
+}
+
+main {
+    grid-area: main;
+    // min-height: calc(100% - 15rem + 1px);
+    .main-header {
+        height: 2rem;
+        margin: 0;
+        font-size: 1.5rem;
+        padding: .25rem;
+        text-align: center;
+    }
+}
+
+a {
+	transition: all .3s;
+	font-weight: 300;
+}
