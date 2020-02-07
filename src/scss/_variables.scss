@@ -1,3 +1,11 @@
+$breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
+);
+
 $brand: #27313F !default;
 $brand-secondary: #344050 !default;
 $brand-third: #8b96a5 !default;
