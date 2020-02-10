@@ -1,5 +1,5 @@
 .intro-module {
-    article {
+    .module-article {
         // text-align: center;
         padding: 2rem 3rem;
         header {
@@ -12,7 +12,7 @@
             color: $brand;
         }
     }
-    aside {
+    .module-image {
         img {
             width: 100%;
             max-height: 540px;
