@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Template that allows for easy configuring and displays example section types from standard web apps.">
+
+    <!-- OG meta tags -->
+    <meta property="og:site_name" content="github.com/JoeDBNS">
+    <meta property="og:title" content="site-showcase-template">
+    <meta property="og:description" content="Template that allows for easy configuring and displays example section types from standard web apps.">
+    <meta property="og:url" content="https://github.com/JoeDBNS/site-showcase-template">
+    <!-- <meta property="og:image" content="static/img/siteimage.png"> -->
+    <meta property="og:type" content="website">
+
+    <link rel="shortcut icon" href="static/img/favicon.ico" type="image/x-icon">
+
+    <title>site-showcase-template</title>
+
+    <link rel="stylesheet" href="static/css/main.css">
+</head>
+
+<body>
+    <header id="app-header">
+        <a href="#app-main" class="skip-navigation">Skip to main content</a>
+
+        <nav class="navbar">
+            <a class="navbar-brand" href="index.html">
+                <img src="./static/img/placeholder.png" alt="Placeholder image">
+            </a>
+
+            <button class="navbar-toggler" type="button" aria-label="Open Menu">
+                <span class="toggler-text">MENU</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+
+            <div class="navbar-popup">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            <span class="link-text">Home</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            <span class="link-text">Login</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="form.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clipboard"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+                            <span class="link-text">Form</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="inputs.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-archive"><polyline points="21 8 21 21 3 21 3 8"></polyline><rect x="1" y="3" width="22" height="5"></rect><line x1="10" y1="12" x2="14" y2="12"></line></svg>
+                            <span class="link-text">Inputs</span class="link-text">
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="ideas.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                            <span class="link-text">Ideas</span class="link-text">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main id="app-main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label for="input-preview-text">text</label>
+                    <input id="input-preview-text" type="text">
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label for="input-preview-number">number</label>
+                    <input id="input-preview-number" type="number">
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label for="input-preview-email">email</label>
+                    <input id="input-preview-email" type="email">
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label for="input-preview-tel">tel</label>
+                    <input id="input-preview-tel" type="tel">
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label for="input-preview-url">url</label>
+                    <input id="input-preview-url" type="url">
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label for="input-preview-password">password</label>
+                    <input id="input-preview-password" type="password">
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label for="input-preview-date">date</label>
+                    <input id="input-preview-date" type="date">
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label for="input-preview-time">time</label>
+                    <input id="input-preview-time" type="time">
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label for="input-preview-datetime">datetime</label>
+                    <input id="input-preview-datetime" type="datetime">
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label for="input-preview-datetime-local">datetime-local</label>
+                    <input id="input-preview-datetime-local" type="datetime-local">
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label for="input-preview-search">search</label>
+                    <input id="input-preview-search" type="search">
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label for="input-preview-file">file</label>
+                    <input id="input-preview-file" type="file">
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label for="input-preview-range">range</label>
+                    <input id="input-preview-range" type="range">
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label for="input-preview-color">color</label>
+                    <input id="input-preview-color" type="color">
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <fieldset>
+                        <legend>checkbox</legend>
+                        <label for="input-preview-checkbox-1">check 1</label>
+                        <input id="input-preview-checkbox-1" type="checkbox">
+                        <label for="input-preview-checkbox-2">check 2</label>
+                        <input id="input-preview-checkbox-2" type="checkbox">
+                    </fieldset>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <fieldset>
+                        <legend>radio</legend>
+                        <label for="input-preview-radio-1">radio 1</label>
+                        <input id="input-preview-radio-1" type="radio">
+                        <label for="input-preview-radio-2">radio 2</label>
+                        <input id="input-preview-radio-2" type="radio">
+                    </fieldset>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label for="input-preview-textarea">textarea</label>
+                    <textarea id="input-preview-textarea"></textarea>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label for="input-preview-select">select</label>
+                    <select id="input-preview-select">
+                        <option></option>
+                        <option>Test Option 1</option>
+                        <option>Test Option 2</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="app-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-md-2 col-lg-3">
+                    <a class="footer-brand" href="index.html">
+                        <img src="./static/img/placeholder.png" alt="Placeholder image">
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-5">
+                    <div class="footer-nav">
+                        <a class="nav-link" href="goal.html">Our Goal</a>
+                        <a class="nav-link" href="alliance.html">Sixty by 30 Alliance</a>
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-5 col-lg-4">
+                    <a href="join.html">Join the Sixty by 30 Alliance</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom row">
+                <div class="col-12 col-md bottom-link">Privacy Policy</div>
+                <div class="col-12 col-md bottom-link">Cookie Policy</div>
+                <div class="col-12 col-md bottom-link">Terms of Use</div>
+                <div class="col-12 col-md bottom-link">Other Info</div>
+
+                <div class="col-12 bottom-copyright">&copy;2020 Joe Davis</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/js/main.js"></script>
+</body>
+
+</html>
