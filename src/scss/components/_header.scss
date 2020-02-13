@@ -8,12 +8,12 @@
 		top: -2rem;
 		left: 0;
 		border: 1px solid $brand;
-		border-radius: 3px;
+		border-radius: $radius-input;
 		background-color: $white;
 		padding: 2px 12px;
 		outline: none;
 		z-index: 99;
-		transition: linear .1s all;
+		transition: linear 0.1s all;
 		&:focus {
 			top: 0;
 		}
@@ -23,23 +23,23 @@
 		padding: 0;
 		.navbar-brand {
             padding: 0;
-			margin: 0 .4rem;
-            border-radius: 4px;
+			margin: 0 0.4rem;
+            border-radius: $radius-element;
             img {
 				width: 2rem;
 				height: auto;
-				border-radius: 4px;
+				border-radius: $radius-element;
                 overflow: hidden;
                 user-select: none;
 			}
 		}
 		.navbar-toggler {
-			padding: .74rem 1rem;
+			padding: 0.74rem 1rem;
 			color: $white;
 			font-size: 1rem;
 			border: 2px solid $brand;
 			border-radius: 0;
-            transition: linear .3s all;
+            transition: linear 0.3s all;
             user-select: none;
 			&:focus {
 				background-color: $white;
@@ -49,7 +49,7 @@
 			svg {
 				position: relative;
 				top: -1px;
-				transition: linear .15s all;
+				transition: linear 0.15s all;
 			}
 		}
 		.navbar-toggler-expand {
@@ -68,10 +68,10 @@
 			border-width: 2px;
 			border-style: solid;
 			border-color: $brand;
-			border-radius: 0 0 4px 4px;
+			border-radius: 0 0 $radius-element $radius-element;
 			z-index: 99;
 			opacity: 0;
-			transition: linear .05s all;
+			transition: linear 0.05s all;
 			pointer-events: none;
 			&:focus, &:hover {
 				top: 37px;
@@ -81,9 +81,9 @@
 			.navbar-nav .nav-item .nav-link {
 				padding: 10px 70px 10px 30px;
 				color: $brand;
-				font-size: 1.05rem;
-				line-height: 1.05rem;
-				transition: linear .05s all;
+				font-size: 1.15rem;
+				line-height: 1.15rem;
+				transition: linear 0.05s all;
                 user-select: none;
 				&:focus, &:hover {
 					background-color: $brand-gray;
