@@ -1,8 +1,11 @@
 label,
 legend {
+    width: 100%;
     font-size: 1rem;
     user-select: none;
     margin-bottom: 2px;
+    border-radius: $radius-input;
+    transition: linear 0.1s box-shadow;
 }
 
 input[type="text"],
@@ -48,58 +51,47 @@ input[type="range"] {
     width: 100%;
     padding: 0.35rem 0;
 }
+input[type="checkbox"],
+input[type="radio"] {
+    width: 0;
+    height: 0;
+    visibility: visible;
+    opacity: 0;
+    &:checked {
+        + label > .label-box-display > svg {
+            opacity: 1;
+        }
+    }
+    &:focus {
+        + label {
+            box-shadow: 0 0 4px $brand;
+        }
+    }
+}
+input[type="checkbox"] {
+    + label > .label-box-display {
+        border-radius: $radius-input;
+    }
+}
+input[type="radio"] {
+    + label > .label-box-display {
+        border-radius: $radius-input-radio;
+    }
+}
 .input-set {
     margin: 14px 0;
 }
-
-.set-fieldset {
-    .fieldset-legend {
-        //
+.label-box-display {
+    background-color: $white;
+    display: inline-block;
+    border: 1px solid $gray;
+    user-select: none;
+    cursor: pointer;
+    svg {
+        opacity: 0;
+        transition: linear .05s all;
     }
-    .fieldset-inputs {
-        input[type="checkbox"],
-        input[type="radio"] {
-            width: 0;
-            height: 0;
-            visibility: visible;
-            opacity: 0;
-            &:checked {
-                + label > .label-box-display > svg {
-                    opacity: 1;
-                }
-            }
-            &:focus {
-                + label {
-                    box-shadow: 0 0 4px $brand;
-                }
-            }
-        }
-        input[type="checkbox"] {
-            + label > .label-box-display {
-                border-radius: $radius-input;
-            }
-        }
-        input[type="radio"] {
-            + label > .label-box-display {
-                border-radius: $radius-input-radio;
-            }
-        }
-        label {
-            width: 100%;
-            border-radius: $radius-input;
-            transition: linear 0.1s box-shadow;
-            .label-box-display {
-                background-color: $white;
-                display: inline-block;
-                margin-right: .25rem;
-                border: 1px solid $gray;
-                user-select: none;
-                cursor: pointer;
-                svg {
-                    opacity: 0;
-                    transition: linear .05s all;
-                }
-            }
-        }
-    }
+}
+.label-text {
+    margin-left: .25rem;
 }
