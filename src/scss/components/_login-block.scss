@@ -10,32 +10,12 @@
             margin-bottom: 4.5rem;
             user-select: none;
         }
-        .form-set {
-            display: grid;
-            margin: 10px 0;
-            label {
-                margin-bottom: .15rem;
-                user-select: none;
-            }
-        }
         .form-action {
             display: grid;
             margin-top: 3rem;
             text-align: center;
-            button {
-                background-color: $brand-fifth;
-                padding: 0.5rem 1.75rem;
-                margin: auto;
-                border: 1px solid $brand-third;
-                border-radius: 3px;
-                transition: linear .1s all;
-                &:focus {
-                    outline: none;
-                    box-shadow: 0 0 4px $brand;
-                }
-            }
             a {
-                margin: .5rem auto 0 auto;
+                margin: 0.5rem auto 0 auto;
             }
         }
     }

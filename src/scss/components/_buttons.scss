@@ -1,0 +1,12 @@
+.btn {
+    background-color: $brand-fifth;
+    padding: 0.5rem 1.75rem;
+    margin: auto;
+    border: 1px solid $brand-third;
+    border-radius: $radius-input;
+    transition: linear 0.1s all;
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 4px $brand;
+    }
+}

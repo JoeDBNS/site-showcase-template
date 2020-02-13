@@ -1,28 +1,15 @@
 $breakpoints: (
-    xs: 0,
-    sm: 576px,
-    md: 768px,
-    lg: 992px,
-    xl: 1200px
+    'xs': 0,
+    'sm': 576px,
+    'md': 768px,
+    'lg': 992px,
+    'xl': 1200px
 );
 
-$brand: #27313F !default;
-$brand-secondary: #344050 !default;
-$brand-third: #8b96a5 !default;
-$brand-forth: #E0E2E5 !default;
-$brand-fifth: #f9f9f9 !default;
+$radius-element: 4px;
+$radius-input: 3px;
 
-$brand-text-main: #c3c3c3 !default;
-
-$brand-red: #88001b !default;
-$brand-green: #90BB54 !default;
-$brand-yellow: #F7CC65 !default;
-$brand-orange: #FF9200 !default;
-
-$brand-gray: #EFEFEF !default;
-$brand-bg: #fafafa !default;
-
-// Bootstrap main colors
+// main colors
 $blue: #007bff;
 $blue-dark: #005fc5;
 $indigo: #6610f2;
@@ -39,3 +26,29 @@ $gray: #6c757d;
 $gray-dark: #343a40;
 $black: #000000;
 $white: #ffffff;
+
+// $brand: #2e2e67;
+
+$brand: #27313F;
+$brand-secondary: #344050;
+$brand-third: #8b96a5;
+$brand-forth: #E0E2E5;
+$brand-fifth: #f9f9f9;
+
+$brand-text-main: #c3c3c3;
+
+$brand-red: #88001b;
+$brand-green: #90BB54;
+$brand-yellow: #F7CC65;
+$brand-orange: #FF9200;
+
+$brand-gray: #EFEFEF;
+$brand-bg: #fafafa;
+
+$brand-palette-test: (
+    'main': #27313F,
+    'secondary': #72717E,
+    'bg': #F2E4B1,
+    'bg-dark': #ACA299,
+    'accent': #EA7953
+);

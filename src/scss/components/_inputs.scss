@@ -1,3 +1,8 @@
+label {
+    user-select: none;
+    margin-bottom: 2px;
+}
+
 input[type="text"],
 input[type="search"],
 input[type="number"],
@@ -10,11 +15,11 @@ input[type="date"],
 input[type="datetime-local"] {
     background-color: $white;
     width: 100%;
-    padding: .25rem .75rem;
+    padding: 0.35rem 0.75rem;
     border: 1px solid $brand-third;
-    border-radius: 3px;
+    border-radius: $radius-input;
     font-size: 1.05rem;
-    transition: linear .1s all;
+    transition: linear 0.1s outline, linear 0.1s box-shadow;
     &:focus {
         outline: none;
         box-shadow: 0 0 4px $brand;
@@ -22,9 +27,12 @@ input[type="datetime-local"] {
 }
 textarea {
     @extend input[type="text"];
-    padding: 3rem;
 }
 select {
     @extend input[type="text"];
-    padding: 3rem;
+    padding: 0.425rem 0.5rem;
+}
+
+.input-set {
+    margin: 14px 0;
 }
