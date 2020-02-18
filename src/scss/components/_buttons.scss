@@ -1,9 +1,9 @@
 .btn {
-    background-color: $brand-fifth;
+    background-color: $brand-sixth;
     padding: 0.5rem 1.75rem;
     margin: auto;
     border: 1px solid $brand-third;
-    border-radius: $radius-input;
+    border-radius: $radius-button;
     transition: linear 0.1s all;
     &:focus {
         outline: none;
