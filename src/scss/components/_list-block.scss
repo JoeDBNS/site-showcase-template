@@ -1,5 +1,16 @@
 .list-module {
-    .row-checkbox {
-        display: flex;
+    @extend .table-module;
+    .module-controls {
+        margin-bottom: 20px;
+    }
+    .module-list {
+        .column-checkbox {
+            width: 5rem;
+            padding-right: 10px;
+            text-align: center;
+            .checkbox-container {
+                display: flex;
+            }
+        }
     }
 }
