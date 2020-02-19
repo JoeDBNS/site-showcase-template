@@ -90,7 +90,7 @@
 				transition: linear 0.05s all;
                 user-select: none;
 				&:focus, &:hover {
-					background-color: $brand-gray;
+					background-color: $brand-gray-300;
 				}
 				svg {
 					position: relative;

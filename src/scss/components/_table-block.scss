@@ -27,7 +27,7 @@
             font-size: 0.9375rem;
         }
         tbody tr:hover {
-            background-color: $brand-fifth;
+            background-color: $brand-gray-200;
             cursor: pointer;
         }
         tbody tr td {
@@ -37,7 +37,7 @@
             border-right: 1px solid $gray-light;
         }
         tbody tr:nth-child(even) td {
-            background-color: #f4f7ff;
+            background-color: $brand-forth;
         }
         tbody tr td:first-child {
             border-radius: 2px 0 0 2px;
