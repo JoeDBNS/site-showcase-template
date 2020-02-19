@@ -7,12 +7,12 @@ html, body, main {
 	color: $black;
 }
 
-html, body {
+html {
     height: 100%;
 }
 
 body {
-    background-color: $brand-gray-300;
+    min-height: 100%;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     grid-template-rows: 3rem auto 0 12rem;
@@ -22,6 +22,7 @@ body {
         ". . . ."
         "footer footer footer footer";
     align-content: space-between;
+    background-color: $brand-gray-300;
 }
 
 main {
