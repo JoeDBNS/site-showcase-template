@@ -34,9 +34,9 @@
 			}
 		}
 		.navbar-toggler {
-			padding: 0.74rem 1rem;
+			padding: 0.84rem 1rem;
 			color: $white;
-			font-size: 1rem;
+			font-size: 1.1rem;
 			border: 2px solid $brand;
 			border-radius: 0;
             transition: linear 0.3s all;
@@ -45,7 +45,11 @@
 				background-color: $white;
 				color: $brand;
 				outline: none;
-			}
+            }
+            .toggler-text {
+                position: relative;
+                top: 1px;
+            }
 			svg {
 				position: relative;
 				top: -1px;
@@ -62,7 +66,7 @@
 		.navbar-popup {
 			position: absolute;
 			right: 0;
-			top: 30px;
+			top: 40px;
 			background-color: $white;
 			color: $black;
 			border-width: 2px;
@@ -74,7 +78,7 @@
 			transition: linear 0.05s all;
 			pointer-events: none;
 			&:focus, &:hover {
-				top: 37px;
+				top: 40px;
 				opacity: 1;
 				pointer-events: auto;
 			}
@@ -98,7 +102,7 @@
 			}
 		}
 		.navbar-popup-show {
-			top: 37px;
+			top: 40px;
 			opacity: 1;
 			pointer-events: auto;
 		}
