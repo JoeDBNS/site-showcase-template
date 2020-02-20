@@ -82,23 +82,26 @@
 				opacity: 1;
 				pointer-events: auto;
 			}
-			.navbar-nav .nav-item .nav-link {
-				padding: 10px 70px 10px 30px;
-				color: $brand;
-				font-size: 1.15rem;
-				line-height: 1.15rem;
-				transition: linear 0.05s all;
-                user-select: none;
-				&:focus, &:hover {
-					background-color: $brand-gray-200;
-				}
-				svg {
-					position: relative;
-					top: -1px;
-				}
-				.link-text {
-					margin-left: 4px;
-				}
+			.navbar-nav .nav-item {
+                border-bottom: 1px solid $brand-gray-300;
+                .nav-link {
+                    padding: 10px 70px 10px 30px;
+                    color: $brand;
+                    font-size: 1.15rem;
+                    line-height: 1.15rem;
+                    transition: linear 0.05s all;
+                    user-select: none;
+                    &:focus, &:hover {
+                        background-color: $brand-gray-200;
+                    }
+                    svg {
+                        position: relative;
+                        top: -1px;
+                    }
+                    .link-text {
+                        margin-left: 4px;
+                    }
+                }
 			}
 		}
 		.navbar-popup-show {
