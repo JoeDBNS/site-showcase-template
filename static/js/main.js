@@ -3,6 +3,7 @@
 // OnLoad Run
 window.addEventListener('load', function() {
     InitNavigationMenu();
+    SetupFormProgressMarkers();
 });
 
 
@@ -43,4 +44,30 @@ function InitNavigationMenu() {
         }
     });
 }
+
+
+
+function SetupFormProgressMarkers() {
+    Array.from(document.querySelectorAll('.progress-module .step-text')).forEach(function(element) {
+        element.addEventListener('click', function(event) {
+            if (element.parentElement.classList.length === 1) {
+                element.parentElement.classList.add('step-pending')
+            }
+            else {
+                if (element.parentElement.classList.contains('step-pending')) {
+                    element.parentElement.classList.remove('step-pending')
+                    element.parentElement.classList.add('step-complete')
+                }
+                else if (element.parentElement.classList.contains('step-complete')) {
+                    element.parentElement.classList.remove('step-complete')
+                    element.parentElement.classList.add('step-fail')
+                }
+                else if (element.parentElement.classList.contains('step-fail')) {
+                    element.parentElement.classList.remove('step-fail')
+                }
+            }
+        });
+    });
+}
+
 
