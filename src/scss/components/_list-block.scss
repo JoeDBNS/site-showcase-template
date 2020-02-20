@@ -2,6 +2,7 @@
     @extend .table-module;
     .module-controls {
         margin-bottom: 20px;
+        user-select: none;
     }
     .module-list {
         .column-checkbox {
