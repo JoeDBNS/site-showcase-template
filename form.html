@@ -100,7 +100,7 @@
         </nav>
     </header>
 
-    <main id="app-main" class="container">
+    <main id="app-main" class="container-fluid">
         <section class="progress-module row">
             <div class="container-fluid">
                 <div class="row justify-content-center">
@@ -196,12 +196,19 @@
         </section>
 
         <section class="form-module row">
-            <form class="col-12 col-md-6">
-                <h1 class="form-header">form</h1>
+            <form class="container-fluid">
+                <h1 class="form-header">Example Form</h1>
 
-                <div class="input-set">
-                    <label for="test">Test</label>
-                    <input type="text" id="test">
+                <div class="row">
+                    <div class="input-set col-12 col-md-6 col-lg-4">
+                        <label for="test1">Test</label>
+                        <input type="text" id="test1">
+                    </div>
+
+                    <div class="input-set col-12 col-md-6 col-lg-8">
+                        <label for="test2">Test</label>
+                        <input type="text" id="test2">
+                    </div>
                 </div>
 
                 <div class="form-action">
