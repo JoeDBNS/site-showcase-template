@@ -1,0 +1,43 @@
+.page-controls-module {
+    .controls-page-left, .controls-page-right {
+        svg {
+            margin-top: 6px;
+            cursor: pointer;
+        }
+    }
+    .controls-page-left {
+        svg {
+            margin-right: 4px;
+        }
+    }
+    .controls-page-right {
+        svg {
+            margin-left: 4px;
+        }
+    }
+    .controls-page-info {
+        display: flex;
+        padding: 4px;
+        border: 1px solid #637183;
+        border-radius: 4px;
+        .info-tab {
+            background-color: transparent;
+            color: $black;
+            font-size: 1.1rem;
+            padding: 2px 8px;
+            margin: 0 5px;
+            border-radius: $radius-element;
+            box-shadow: 0 0 3px transparent;
+            cursor: pointer;
+            user-select: none;
+            transition: linear .1s all;
+            &:hover, &:focus {
+                box-shadow: 0 0 3px $brand-secondary;
+            }
+        }
+        .info-tab-selected {
+            background-color: $brand-red;
+            color: $white;
+        }
+    }
+}
