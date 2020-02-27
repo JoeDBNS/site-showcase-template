@@ -1,0 +1,37 @@
+.card-module {
+    padding: 24px 0;
+    .card {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 350px;
+        margin: auto;
+        padding: 6px;
+        border-radius: $radius-element;
+        .card-image {
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            border-radius: $radius-element;
+            overflow: hidden;
+            img {
+                height: 8rem;
+                width: 8rem;
+            }
+        }
+        .card-desc {
+            padding: 0 12px;
+            text-align: left;
+            .desc-title {
+                height: 1.3rem;
+                margin-bottom: 3px;
+                font-size: 1.3rem;
+            }
+            .desc-name {
+                font-size: 1.6rem;
+            }
+            .desc-link {
+                position: absolute;
+                bottom: 6px;
+            }
+        }
+    }
+}
