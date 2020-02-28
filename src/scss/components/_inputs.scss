@@ -93,9 +93,9 @@ input[type="radio"] {
     cursor: pointer;
     svg {
         opacity: 0;
-        transition: linear .05s all;
+        transition: linear 0.05s all;
     }
 }
 .label-text {
-    margin-left: .25rem;
+    margin-left: 0.25rem;
 }

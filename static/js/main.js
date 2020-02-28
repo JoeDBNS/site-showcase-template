@@ -3,8 +3,9 @@
 // OnLoad Run
 window.addEventListener('load', function() {
     InitNavigationMenu();
-    SetupFormProgressMarkers();
-    // SetupFormListeners();
+    // InitFormProgressMarkers();
+    InitFormProgressDisplay();
+    // InitFormListeners();
 });
 
 
@@ -47,8 +48,47 @@ function InitNavigationMenu() {
 }
 
 
+function InitFormProgressDisplay() {
+    let progress_module = document.querySelector('.progress-bar-module');
+    let progress_module_display = progress_module.querySelector('.progress-display');
+    let progress_display_toggler = progress_module.querySelector('.display-toggle');
 
-function SetupFormProgressMarkers() {
+    if (progress_module) {
+        progress_module.querySelector('.display-toggle').addEventListener('click', function() {
+            if (progress_module_display.classList.contains('progress-display-open')) {
+                progress_module_display.classList.remove('progress-display-open');
+            }
+            else {
+                progress_module_display.classList.add('progress-display-open');
+            }
+        });
+    }
+
+    // close progress popup on mousedown outside of progress popup
+    document.addEventListener('mousedown', function(event) {
+        if (progress_module_display.classList.contains('progress-display-open')) {
+            contains_progress_popup = false;
+            node = event.target;
+
+            // check event.target parents for progress popup and progress toggler
+            while (node !== null) {
+                if (node === progress_module_display || node === progress_display_toggler) {
+                    contains_progress_popup = true;
+                }
+                node = node.parentElement;
+            }
+
+            // if outside of progress popup, close progress popup and flip chevron
+            if (!contains_progress_popup) {
+                progress_module_display.classList.remove('progress-display-open');
+            }
+        }
+    });
+}
+
+
+
+function InitFormProgressMarkers() {
     Array.from(document.querySelectorAll('.progress-module .step-text')).forEach(function(element) {
         element.addEventListener('click', function(event) {
             if (element.parentElement.classList.length === 1) {
@@ -78,7 +118,7 @@ function SetupFormProgressMarkers() {
 
 
 // Forms related functions
-function SetupFormListeners() {
+function InitFormListeners() {
     if ($('[data-form-submit-target]').length) {
         $('[data-form-submit-target]').each(function() {
             let form_submit_button = $('[data-form-submit-target]');

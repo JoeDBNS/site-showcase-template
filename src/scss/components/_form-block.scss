@@ -3,13 +3,32 @@
         // background: white;
         // box-shadow: 0 1px 3px #c1c1c1;
         // border-radius: 4px;
-        // padding: 26px 30px;
+        // padding: 32px 40px;
         margin: 20px auto;
         .form-header {
-            margin-bottom: 20px;
+            // margin-bottom: 70px;
+        }
+        .form-section {
+            margin-top: 60px;
+            .section-header {
+                font-size: 1.3rem;
+                display: flex;
+                margin-bottom: 10px;
+                .header-text {
+                    padding-right: 2rem;
+                    z-index: 1;
+                }
+                .header-divider {
+                    height: 3px;
+                    // background-color: $brand-gray-500;
+                    background-color: #7c8a9c;
+                    top: 50%;
+                    z-index: 2;
+                }
+            }
         }
         .form-action {
-            margin-top: 40px;
+            margin-top: 60px;
         }
     }
 }

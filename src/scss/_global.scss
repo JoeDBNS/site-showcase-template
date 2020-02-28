@@ -1,4 +1,5 @@
 html, body, main {
+	// font-family: sans-serif;
 	font-family: Monospace;
 	position: relative;
     width: 100%;
@@ -16,7 +17,7 @@ body {
     min-height: 100%;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 3rem auto 0 12rem;
+    grid-template-rows: 3rem auto -1px 12rem;
     grid-template-areas:
         "header header header header"
         "main main main main"
@@ -28,12 +29,11 @@ body {
 
 main {
     grid-area: main;
-    // min-height: calc(100% - 15rem + 1px);
     .main-header {
         height: 2rem;
         margin: 0;
         font-size: 1.5rem;
-        padding: .25rem;
+        padding: 0.25rem;
         text-align: center;
     }
 }
@@ -41,5 +41,5 @@ main {
 a {
     color: $blue-dark;
     font-weight: 300;
-	transition: all .3s;
+	transition: all 0.3s;
 }

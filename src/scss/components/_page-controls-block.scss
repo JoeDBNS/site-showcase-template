@@ -30,7 +30,7 @@
             box-shadow: 0 0 3px transparent;
             cursor: pointer;
             user-select: none;
-            transition: linear .1s all;
+            transition: linear 0.1s all;
             &:hover, &:focus {
                 box-shadow: 0 0 3px $brand-secondary;
             }

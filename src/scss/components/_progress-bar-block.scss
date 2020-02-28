@@ -1,0 +1,124 @@
+/* IE and EDGE */
+progress {
+    /* RESETS */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+
+    min-width: 200px;
+    height: 15px;
+    border-radius: $radius-progress;
+    background-color: $brand-gray-100;
+    color: $brand-secondary;
+}
+
+/* WEBKIT BROWSERS - CHROME, OPERA AND SAFARI */
+progress::-webkit-progress-bar {
+    background-color: $brand-gray-100;
+    border-radius: $radius-progress;
+}
+
+progress::-webkit-progress-value {
+    background-color: $brand-secondary;
+    border-radius: $radius-progress;
+}
+
+/* MOZILLA FIREFOX */
+progress::-moz-progress-bar {
+    background-color: $brand-secondary;
+    border-radius: $radius-progress;
+}
+
+
+.progress-bar-module {
+    background-color: $brand-gray-200;
+    position: sticky;
+    top: 18px;
+    box-shadow: 0 1px 1px darkgray;
+    z-index: 3;
+    .progress-text {
+        padding-top: 4px;
+    }
+    .progress-display {
+        display: flex;
+        position: relative;
+        padding: 4px 0 4px 0;
+        .display-text {
+            margin: auto 10px auto 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .display-bar {
+            width: 100%;
+            border: 1px solid $brand-third;
+            border-radius: $radius-element;
+            overflow: hidden;
+            progress {
+                height: 100%;
+                width: 100%;
+            }
+        }
+        .display-toggle {
+            margin-left: 8px;
+            padding: 0.4rem 0.65rem;
+            svg {
+                transition: linear 0.1s all;
+            }
+        }
+        .display-popup {
+            border: 1px solid $brand-third;
+            border-radius: $radius-element;
+            background-color: $white;
+            position: absolute;
+            width: 95%;
+            top: 95%;
+            right: 0;
+            overflow: hidden;
+            z-index: 3;
+            opacity: 0;
+            pointer-events: none;
+            transition: linear 0.075s all;
+            .popup-page {
+                display: flex;
+                padding: 8px 6px;
+                border-bottom: 1px solid $brand-gray-300;
+                transition: linear 0.025s all;
+                &:last-child {
+                    border-bottom: none;
+                }
+                &:hover {
+                    background-color: $brand-gray-200;
+                }
+                .page-status {
+                    margin: auto 0;
+                    svg {
+                        width: 27px;
+                        height: 27px;
+                    }
+                }
+                .page-label {
+                    width: 100%;
+                    margin: auto 0;
+                    padding: 0 6px;
+                }
+                .page-open {
+                    margin: auto 0;
+                }
+            }
+        }
+    }
+    .progress-display-open {
+        .display-toggle {
+            svg {
+                transform: rotate(180deg);
+            }
+        }
+        .display-popup {
+            width: 100%;
+            top: 100%;
+            opacity: 1;
+            pointer-events: inherit;
+        }
+    }
+}

@@ -93,6 +93,7 @@
                     user-select: none;
                     &:focus, &:hover {
                         background-color: $brand-gray-200;
+                        outline: none;
                     }
                     svg {
                         position: relative;
