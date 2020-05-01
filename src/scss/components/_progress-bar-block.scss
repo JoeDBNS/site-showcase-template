@@ -34,18 +34,21 @@ progress::-moz-progress-bar {
 
 
 .progress-bar-module {
-    background-color: $brand-gray-300;
+    // background-color: $brand-gray-300;
+    background-color: #f4f4f4;
     position: sticky;
     top: 18px;
+    padding: 0 5px;
     border-bottom: 2px solid $brand-third;
+    border-bottom: 1px solid #b1b1b1;
     z-index: 3;
     .progress-text {
-        padding-top: 4px;
+        padding-top: 6px;
     }
     .progress-display {
         display: flex;
         position: relative;
-        padding: 4px 0;
+        padding: 4px 14px 6px 14px;
         .display-text {
             margin: auto 10px auto 0;
             font-size: 1.1rem;
@@ -73,7 +76,8 @@ progress::-moz-progress-bar {
             border-color: $brand-third;
             border-width: 0 2px 2px 2px;
             border-radius: 0 0 $radius-element $radius-element;
-            background-color: $brand-gray-300;
+            // background-color: $brand-gray-300;
+            background-color: #f4f4f4;
             position: absolute;
             width: 100%;
             top: 90%;
@@ -89,14 +93,15 @@ progress::-moz-progress-bar {
             }
             .popup-page {
                 display: flex;
-                padding: 8px 6px;
-                border-top: 1px solid $brand-gray-500;
+                padding: 8px 12px 8px 8px;
+                border-bottom: 1px solid #cccccc;
+                cursor: pointer;
                 transition: linear 0.025s all;
                 &:hover {
                     background-color: $brand-gray-200;
                 }
                 .page-status {
-                    margin: auto 0;
+                    margin: auto 0 auto 10px;
                     svg {
                         width: 24px;
                         height: 24px;
@@ -105,7 +110,9 @@ progress::-moz-progress-bar {
                 .page-label {
                     width: 100%;
                     margin: auto 0;
-                    padding: 0 10px;
+                    padding: 0 12px;
+                    font-size: 1.1rem;
+                    user-select: none;
                 }
                 .page-open {
                     margin: auto 0;
@@ -115,7 +122,7 @@ progress::-moz-progress-bar {
                 }
             }
             .popup-page-selected {
-                background-color: $brand-gray-100;
+                background-color: $white;
                 &:hover {
                     color: black;
                 }
@@ -135,6 +142,35 @@ progress::-moz-progress-bar {
             top: 100%;
             opacity: 1;
             pointer-events: inherit;
+        }
+    }
+}
+
+@media only screen and (min-width: 991px) {
+    .progress-bar-module {
+        padding: 0;
+        border-right: 1px solid darkgray;
+        .progress-text {
+            padding-top: 6px;
+        }
+        .progress-display {
+            .display-toggle {
+                display: none;
+            }
+            .display-popup {
+                border: none;
+                opacity: 1;
+                pointer-events: inherit;
+                .popup-header {
+                    padding: 24px 14px 8px 14px;
+                }
+                .popup-page {
+                    .page-label {
+                        padding: 6px;
+                        font-size: 1rem;
+                    }
+                }
+            }
         }
     }
 }

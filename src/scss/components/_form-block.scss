@@ -7,9 +7,10 @@
         margin: 40px auto 30px auto;
         .form-header {
             // margin-bottom: 70px;
+            text-align: center;
         }
         .form-section {
-            margin-top: 60px;
+            margin-top: 90px;
             .section-header {
                 font-size: 1.3rem;
                 display: flex;
@@ -21,14 +22,18 @@
                 .header-divider {
                     height: 3px;
                     // background-color: $brand-gray-500;
-                    background-color: #7c8a9c;
+                    // background-color: #7c8a9c;
+                    background-color: $brand;
                     top: 50%;
                     z-index: 2;
                 }
             }
+            &:first-of-type {
+                margin-top: 40px;
+            }
         }
         .form-action {
-            margin-top: 60px;
+            margin-top: 80px;
         }
     }
 }
