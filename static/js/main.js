@@ -3,9 +3,11 @@
 // OnLoad Run
 window.addEventListener('load', function() {
     InitNavigationMenu();
-    // InitFormProgressMarkers();
-    InitFormProgressDisplay();
-    // InitFormListeners();
+    if (window.location.pathname === "/form-long.html") {
+        // InitFormProgressMarkers();
+        InitFormProgressDisplay();
+        // InitFormListeners();
+    }
 });
 
 
