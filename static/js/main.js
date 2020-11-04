@@ -4,7 +4,7 @@
 window.addEventListener('load', function() {
     InitNavigationMenu();
 
-    switch (window.location.pathname.toLowerCase()) {
+    switch (window.location.pathname.replace('/site-showcase-template', '').toLowerCase()) {
         case '/form-long.html':
             // InitFormProgressMarkers();
             InitFormProgressDisplay();
