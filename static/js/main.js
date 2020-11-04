@@ -3,10 +3,21 @@
 // OnLoad Run
 window.addEventListener('load', function() {
     InitNavigationMenu();
-    if (window.location.pathname === "/form-long.html") {
-        // InitFormProgressMarkers();
-        InitFormProgressDisplay();
-        // InitFormListeners();
+
+    switch (window.location.pathname.toLowerCase()) {
+        case '/form-long.html':
+            // InitFormProgressMarkers();
+            InitFormProgressDisplay();
+            // InitFormListeners();
+            break;
+
+        case '/form-short.html':
+            InitFormPreSelector();
+            InitFormDemoFunc();
+            break;
+    
+        default:
+            break;
     }
 });
 
@@ -89,7 +100,6 @@ function InitFormProgressDisplay() {
 }
 
 
-
 function InitFormProgressMarkers() {
     Array.from(document.querySelectorAll('.progress-module .step-text')).forEach(function(element) {
         element.addEventListener('click', function(event) {
@@ -116,6 +126,58 @@ function InitFormProgressMarkers() {
         });
     });
 }
+
+
+function InitFormPreSelector() {
+    Array.from(document.querySelectorAll('.select-card')).forEach((card) => {
+        card.addEventListener('click', (event) => {
+            document.querySelector('.form-select-module').setAttribute('hidden', 'true');
+            document.querySelector('.form-module').removeAttribute('hidden');
+        });
+    });
+
+    document.querySelector('.form-back-button').addEventListener('click', () => {
+        document.querySelector('.form-module').setAttribute('hidden', 'true');
+        document.querySelector('.form-select-module').removeAttribute('hidden');
+    });
+}
+
+
+function InitFormDemoFunc() {
+    var type_selector = document.querySelector('#type');
+    var type_sections = document.querySelectorAll('[data-type-select]');
+    var type_section_birthday = document.querySelector('[data-type-select="birthday"]');
+    var type_section_military = document.querySelector('[data-type-select="military"]');
+    
+    
+    type_selector.addEventListener('change', (event) => {
+        Array.from(type_sections).forEach((section) => {
+            section.setAttribute('hidden', 'true');
+        });
+
+        switch (type_selector.value) {
+            case 'military':
+                type_section_military.removeAttribute('hidden');
+                break;
+
+            case 'birthday':
+                type_section_birthday.removeAttribute('hidden');
+                break;
+        
+            default:
+                break;
+        }
+        document.querySelector('.form-select-module').setAttribute('hidden', 'true');
+        document.querySelector('.form-module').removeAttribute('hidden');
+    });
+
+    document.querySelector('.form-back-button').addEventListener('click', () => {
+        document.querySelector('.form-module').setAttribute('hidden', 'true');
+        document.querySelector('.form-select-module').removeAttribute('hidden');
+    });
+}
+
+
 
 
 

@@ -1,5 +1,9 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(../fonts/Montserrat-Regular.ttf);
+  }
+
 html, body, main {
-	// font-family: sans-serif;
 	font-family: Monospace;
 	position: relative;
     width: 100%;
@@ -25,7 +29,7 @@ body {
         "footer footer footer footer";
     align-content: space-between;
     background-color: $brand-gray-200;
-    background-color: #f8f8f8;
+    background-color: #F5F5F5;
 }
 
 main {

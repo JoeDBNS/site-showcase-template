@@ -4,7 +4,9 @@
         // box-shadow: 0 1px 3px #c1c1c1;
         // border-radius: 4px;
         // padding: 32px 40px;
-        margin: 40px auto 30px auto;
+        margin: 40px auto 50px auto;
+	    font-family: sans-serif, monospace;
+        
         .form-header {
             // margin-bottom: 70px;
             text-align: center;
@@ -13,13 +15,14 @@
         .form-section {
             margin-top: 90px;
             .section-header {
-                font-size: 1.3rem;
                 display: flex;
-                margin-bottom: 10px;
+                margin-bottom: 28px;
+                font-size: 1.3rem;
                 .header-text {
                     padding-right: 2rem;
                     z-index: 1;
                     font-weight: bold;
+                    color: $brand;
                 }
                 .header-divider {
                     height: 3px;
