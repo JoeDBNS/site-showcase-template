@@ -133,12 +133,14 @@ function InitFormPreSelector() {
         card.addEventListener('click', (event) => {
             document.querySelector('.form-select-module').setAttribute('hidden', 'true');
             document.querySelector('.form-module').removeAttribute('hidden');
+            window.scrollTo(0, 0);
         });
     });
 
     document.querySelector('.form-back-button').addEventListener('click', () => {
         document.querySelector('.form-module').setAttribute('hidden', 'true');
         document.querySelector('.form-select-module').removeAttribute('hidden');
+        window.scrollTo(0, 0);
     });
 }
 
