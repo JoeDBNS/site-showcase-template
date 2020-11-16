@@ -133,15 +133,15 @@ function InitFormProgressMarkers() {
 
 
 function InitSelfHelpMenu() {
-    Array.from(document.querySelectorAll('.help-topic')).forEach((selected_topic) => {
+    Array.from(document.querySelectorAll('.help-topic .topic-header')).forEach((selected_topic) => {
         selected_topic.addEventListener('click', (event) => {
             var open_topic = document.querySelector('.help-topic-expanded');
             if (open_topic) {
                 open_topic.classList.remove('help-topic-expanded');
             }
 
-            if (open_topic !== selected_topic) {
-                selected_topic.classList.add('help-topic-expanded');
+            if (open_topic !== selected_topic.parentElement) {
+                selected_topic.parentElement.classList.add('help-topic-expanded');
             }
         });
     });
