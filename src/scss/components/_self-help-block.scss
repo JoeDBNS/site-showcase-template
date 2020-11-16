@@ -21,6 +21,7 @@
         .help-topic {
             overflow: hidden;
             border-top: 1px solid #c1c1c1;
+            transition: linear .025s all;
 
             .topic-header {
                 display: flex;
@@ -55,6 +56,8 @@
         }
 
         .help-topic-expanded {
+            box-shadow: 0 0 0 1px rgba(5, 120, 161, 0.25) inset;
+
             .topic-header {
                 .header-arrow {
                     svg {
