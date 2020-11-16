@@ -49,8 +49,20 @@
 
             .topic-solution {
                 display: none;
-                padding: 1rem 20px 2rem 20px;
+                padding: .5rem 20px 2rem 20px;
                 font-size: 1rem;
+
+                .solution-link {
+                    margin-top: 18px;
+
+                    a {
+                        font-weight: 600;
+
+                        svg {
+                            margin-left: 5px;
+                        }
+                    }
+                }
             }
         }
 
