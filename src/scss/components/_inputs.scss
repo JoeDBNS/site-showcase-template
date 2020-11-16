@@ -1,12 +1,12 @@
 label,
 legend {
+    font-family: sans-serif, monospace;
     display: block;
     width: 100%;
     margin: 12px 0 1px 2px;
-    font-size: .95rem;
+    font-size: .85rem;
     color: #616161;
     user-select: none;
-    margin-bottom: 2px;
     border-radius: $radius-input;
     transition: linear 0.1s box-shadow;
 }
@@ -23,7 +23,7 @@ input[type="date"],
 input[type="datetime-local"] {
     background-color: $white;
     width: 100%;
-    padding: 0.35rem 0.75rem;
+    padding: 4px 0 4px 10px;
     border: 1px solid #c1c1c1;
     border-radius: $radius-input;
     font-size: 1.05rem;
