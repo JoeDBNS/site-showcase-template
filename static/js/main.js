@@ -15,6 +15,10 @@ window.addEventListener('load', function() {
             InitFormPreSelector();
             InitFormDemoFunc();
             break;
+
+        case '/self-help.html':
+            InitSelfHelpMenu();
+            break;
     
         default:
             break;
@@ -122,6 +126,22 @@ function InitFormProgressMarkers() {
                 else if (element.parentElement.classList.contains('step-error')) {
                     element.parentElement.classList.remove('step-error');
                 }
+            }
+        });
+    });
+}
+
+
+function InitSelfHelpMenu() {
+    Array.from(document.querySelectorAll('.help-topic')).forEach((selected_topic) => {
+        selected_topic.addEventListener('click', (event) => {
+            var open_topic = document.querySelector('.help-topic-expanded');
+            if (open_topic) {
+                open_topic.classList.remove('help-topic-expanded');
+            }
+
+            if (open_topic !== selected_topic) {
+                selected_topic.classList.add('help-topic-expanded');
             }
         });
     });
