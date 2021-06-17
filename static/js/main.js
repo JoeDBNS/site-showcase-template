@@ -4,24 +4,23 @@
 window.addEventListener('load', function() {
     InitNavigationMenu();
 
-    switch (window.location.pathname.toLowerCase().replace('/site-showcase-template', '')) {
-        case '/form-long.html':
-            // InitFormProgressMarkers();
-            InitFormProgressDisplay();
-            // InitFormListeners();
-            break;
-
-        case '/form-short.html':
-            InitFormPreSelector();
-            InitFormDemoFunc();
-            break;
-
-        case '/self-help.html':
-            InitSelfHelpMenu();
-            break;
     
-        default:
-            break;
+    if (window.location.pathname.toLowerCase().indexOf('/form-long.html') !== -1) {
+        // InitFormListeners();
+        // SetupFormFieldMasks('form-long');
+        // SetReferenceListeners();
+
+        // InitFormProgressMarkers();
+        InitFormProgressDisplay();
+    }
+
+    if (window.location.pathname.toLowerCase().indexOf('/form-short.html') !== -1) {
+        InitFormPreSelector();
+        InitFormDemoFunc();
+    }
+
+    if (window.location.pathname.toLowerCase().indexOf('/self-help.html') !== -1) {
+        InitSelfHelpMenu();
     }
 });
 
