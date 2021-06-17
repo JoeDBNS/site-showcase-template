@@ -4,7 +4,7 @@
 window.addEventListener('load', function() {
     InitNavigationMenu();
 
-    switch (window.location.pathname.replace('/site-showcase-template', '').toLowerCase()) {
+    switch (window.location.pathname.toLowerCase().replace('/site-showcase-template', '')) {
         case '/form-long.html':
             // InitFormProgressMarkers();
             InitFormProgressDisplay();
@@ -192,6 +192,7 @@ function InitFormDemoFunc() {
     });
 }
 
+// Forms related functions
 function SetupFormFieldMasks(form_id) {
     var form = document.querySelector('#' + form_id);
 
@@ -269,15 +270,34 @@ function UpdateCookieSubCount() {
 }
 
 function InitFormListeners() {
-    if ($('[data-form-submit-target]').length) {
-        $('[data-form-submit-target]').each(function() {
-            let form_submit_button = $('[data-form-submit-target]');
-            let form = $('#' + $(form_submit_button).attr('data-form-submit-target'));
-            let form_inputs = $('#' + form.attr('id') + ' input, ' + '#' + form.attr('id') + ' textarea');
+    if (document.querySelectorAll('[data-form-submit-target]').length) {
+        Array.from(document.querySelectorAll('[data-form-submit-target]')).forEach(function(submit_buttom) {
+            let form_submit_button = document.querySelector('[data-form-submit-target]');
+            let form = document.querySelector('#' + form_submit_button.getAttribute('data-form-submit-target'));
+            let form_inputs = document.querySelectorAll(
+                '#' + form.getAttribute('id') + ' input[type="hidden"], '
+                + '#' + form.getAttribute('id') + ' input[type="text"], '
+                + '#' + form.getAttribute('id') + ' input[type="search"], '
+                + '#' + form.getAttribute('id') + ' input[type="number"], '
+                + '#' + form.getAttribute('id') + ' input[type="tel"], '
+                + '#' + form.getAttribute('id') + ' input[type="email"], '
+                + '#' + form.getAttribute('id') + ' input[type="password"], '
+                + '#' + form.getAttribute('id') + ' input[type="url"], '
+                + '#' + form.getAttribute('id') + ' input[type="time"], '
+                + '#' + form.getAttribute('id') + ' input[type="date"], '
+                + '#' + form.getAttribute('id') + ' input[type="datetime-local"], '
+                + '#' + form.getAttribute('id') + ' textarea, '
+                + '#' + form.getAttribute('id') + ' select, '
+                + '#' + form.getAttribute('id') + ' input[type="checkbox"], '
+                + '#' + form.getAttribute('id') + ' fieldset'
+            );
+            let form_file_inputs = document.querySelectorAll('[type="file"]');
 
             SetupInputListeners(form_inputs);
 
-            $(this).on('click', function(event) {
+            SetupFileInputConverters(form_file_inputs);
+
+            submit_buttom.addEventListener('click', function(event) {
                 EvaluateFormSubmit(form, form_inputs);
             });
         });
@@ -287,12 +307,34 @@ function InitFormListeners() {
     }
 }
 
+function SetupFileInputConverters(form_file_inputs) {
+    Array.from(form_file_inputs).forEach((file_input) => {
+        var file_base64_input = document.querySelector('#' + file_input.getAttribute('id') + '_base64');
+
+        if (file_base64_input) {
+            file_input.addEventListener('change', function() {
+                SetFileEncodedValueToField(file_input, file_base64_input);
+            });
+        }
+        else {
+            console.log('"#' + file_input.getAttribute('id') + '" does not have a base64 hidden input.');
+        }
+    });
+}
+
 function SetupInputListeners(form_inputs) {
-    $(form_inputs).each(function() {
-        if ($(this.parentElement).hasClass('form-set-required')) {
-            $(this).on('change', function(event) {
-                if (this.value !== '') {
-                    $(this.parentElement).removeClass('form-set-failed');
+    Array.from(form_inputs).forEach(function(input) {
+        if (input.parentElement.classList.contains('input-set-required') || input.hasAttribute('data-regex-check')) {
+            input.addEventListener('change', function(event) {
+                if (input.value !== '') {
+                    input.parentElement.classList.remove('input-set-failed');
+                }
+                else {
+                    if (input.hasAttribute('data-regex-check') && !input.parentElement.classList.contains('input-set-required')) {
+                        if (input.value === '') {
+                            input.parentElement.classList.remove('input-set-failed');
+                        }
+                    }
                 }
             });
         }
@@ -300,7 +342,7 @@ function SetupInputListeners(form_inputs) {
 }
 
 function EvaluateFormSubmit(form, form_inputs) {
-    let form_inputs_evaluated = ValidateFormFields(form_inputs);
+    let form_inputs_evaluated = SortFormFields(form_inputs);
 
     ProcessFormFields(form_inputs_evaluated[0], form_inputs_evaluated[1]);
 
@@ -310,17 +352,57 @@ function EvaluateFormSubmit(form, form_inputs) {
     }
 }
 
-function ValidateFormFields(form_inputs) {
+function SortFormFields(form_inputs) {
     let failed_inputs = [];
     let passed_inputs = [];
 
-    $(form_inputs).each(function() {
-        if ($(this.parentElement).hasClass('form-set-required')) {
-            if (this.value !== '') {
-                passed_inputs.push(this);
+    Array.from(form_inputs).forEach(function(input) {
+        if (input.parentElement.classList.contains('input-set-required')) {
+            if (input.type === 'fieldset') {
+                if (input.querySelector(':checked')) {
+                    passed_inputs.push(input);
+                }
+                else {
+                    failed_inputs.push(input);
+                }
             }
             else {
-                failed_inputs.push(this);
+                if (input.value !== '') {
+                    if (input.hasAttribute('data-regex-check')) {
+                        if (CheckFieldValueFormat(input, input.getAttribute('data-regex-check'))) {
+                            passed_inputs.push(input);
+                        }
+                        else {
+                            failed_inputs.push(input);
+                        }
+                    }
+                    else {
+                        passed_inputs.push(input);
+                    }
+                }
+                else {
+                    failed_inputs.push(input);
+                }
+            }
+        }
+        else {
+            if (input.type === 'fieldset') {
+                passed_inputs.push(input);
+            }
+            else {
+                if (input.hasAttribute('data-regex-check')) {
+                    if (input.value !== '') {
+                        if (CheckFieldValueFormat(input, input.getAttribute('data-regex-check'))) {
+                            passed_inputs.push(input);
+                        }
+                        else {
+                            failed_inputs.push(input);
+                        }
+                    }
+                    else {
+                        passed_inputs.push(input);
+                    }
+                }
             }
         }
     });
@@ -328,71 +410,165 @@ function ValidateFormFields(form_inputs) {
     return [failed_inputs, passed_inputs];
 }
 
+function CheckFieldValueFormat(field, eval_as) {
+    let regex_email_check = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+    let regex_phone_check = RegExp(/^.{12}$/);
+
+    switch (eval_as) {
+        case 'email':
+            if (regex_email_check.test(field.value)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+            break;
+
+        case 'tel':
+            if (regex_phone_check.test(field.value)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+            break;
+    
+        default:
+            return true;
+            break;
+    }
+}
+
 function ProcessFormFields(failed_inputs, passed_inputs) {
     if (failed_inputs.length > 0) {
         failed_inputs[0].focus();
     }
 
-    $(failed_inputs).each(function() {
-        $(this.parentElement).addClass('form-set-failed');
+    Array.from(failed_inputs).forEach(function(failed) {
+        failed.parentElement.classList.add('input-set-failed');
     });
 
-    $(passed_inputs).each(function() {
-        $(this.parentElement).removeClass('form-set-failed');
+    Array.from(passed_inputs).forEach(function(passed) {
+        passed.parentElement.classList.remove('input-set-failed');
     });
 }
 
 function BuildFormSubmitJson(form_inputs) {
     let form_value_json = {};
 
-    $(form_inputs).each(function() {
-        if (this.type === 'checkbox') {
-            form_value_json[this.getAttribute('data-db-field-name')] = this.checked;
-        }
-        else {
-            form_value_json[this.getAttribute('data-db-field-name')] = this.value;
+    Array.from(form_inputs).forEach(function(input) {
+        if (input.hasAttribute('data-db-field-name')) {
+            switch (input.type) {
+                case 'fieldset':
+                    if (input.querySelector(':checked')) {
+                        form_value_json[input.getAttribute('data-db-field-name')] = input.querySelector(':checked').value;
+                    }
+                    else {
+                        form_value_json[input.getAttribute('data-db-field-name')] = '';
+                    }
+                    break;
+
+                case 'checkbox':
+                    form_value_json[input.getAttribute('data-db-field-name')] = input.checked;
+                    break;
+
+                default:
+                    form_value_json[input.getAttribute('data-db-field-name')] = ReplaceBadUrlParamCharacters(input.value);
+                    break;
+            }
         }
     });
 
     return JSON.stringify(form_value_json);
 }
 
+function SetFileEncodedValueToField(field, field_base64) {
+    var files = field.files;
+    var file = files[0];
+
+    if (files && file) {
+        var reader = new FileReader();
+
+        reader.onload = function(reader_field) {
+            var binary_string = reader_field.target.result;
+            field_base64.value = btoa(binary_string);
+            field_base64.value = '';
+        };
+
+        reader.readAsBinaryString(file);
+    }
+}
+
+function ReplaceBadUrlParamCharacters(fix_string) {
+    let bad_chars = ['&', '#'];
+    let char_rep_with = ['and', '_pound_'];
+
+    bad_chars.forEach((char, index) => {
+        var char_all = new RegExp(char, 'g');
+        fix_string = fix_string.replace(char_all, char_rep_with[index]);
+    });
+
+    return fix_string;
+}
+
 function ProcessFormSubmit(form, form_submit_json_string) {
-    let url = 'https://webapi.mitalent.org/SixtyBy30/SaveJsonLog?JsonLogData=' + encodeURI(form_submit_json_string);
+    let url = env_submit_host + '/GovServices/SaveJsonAndFileData?JsonLogData=' + encodeURI(form_submit_json_string);
+
+    let request = new XMLHttpRequest();
+
+    request.onreadystatechange = function() {
+        if (request.readyState === XMLHttpRequest.DONE) {
+            var status = request.status;
+            if (status === 0 || (status >= 200 && status < 400)) {
+                UpdateFormDisplay(form, 'success');
+            }
+            else {
+                UpdateFormDisplay(form, 'error');
+            }
+        }
+    };
+
+    // Code for working with file attachments
+    // (Not clean, in later versions build info form processing pipeline)
+    // Also currently limits each form to one attachment
+    var form_data = new FormData();
+    var file_field = document.querySelector('input[type=file]');
+
+    if (file_field) {
+        form_data.append('file', file_field.files[0]);
+    }
+
+    request.open('POST', url, true);
+    request.send(form_data);
 
     UpdateFormDisplay(form, 'loading');
-
-    $.ajax({
-        type: "POST",
-        url: url
-    })
-        .done(function() {
-            UpdateFormDisplay(form, 'success');
-        })
-        .fail(function() {
-            UpdateFormDisplay(form, 'error');
-        })
-        .always(function() {
-            console.log("finished");
-        });
 }
 
 function UpdateFormDisplay(form, request_status_code) {
     if (request_status_code === 'loading') {
-        $('[data-form-loading-target=' + form.attr('id') + ']').addClass('form-loading-show');
+        Array.from(document.querySelectorAll('[data-hide-on-submit]')).forEach(function(element) {
+            element.setAttribute('hidden', 'true');
+        });
+
+        document.querySelector('[data-form-loading-target=' + form.getAttribute('id') + ']').classList.add('form-loading-show');
     }
     else {
-        $('[data-form-loading-target=' + form.attr('id') + ']').removeClass('form-loading-show');
-
-        form.hide();
+        document.querySelector('[data-form-loading-target=' + form.getAttribute('id') + ']').classList.remove('form-loading-show');
 
         if (request_status_code === 'success') {
-            $('[data-form-results-target=' + form.attr('id') + ']').addClass('form-results-success');
-            $('[data-form-results-target=' + form.attr('id') + '] .results-success').focus();
+            form.setAttribute('hidden', 'true');
+
+            document.querySelector('[data-form-results-target=' + form.getAttribute('id') + ']').classList.add('form-results-show');
+            document.querySelector('[data-form-results-target=' + form.getAttribute('id') + '] .results-success').focus();
         }
-        else {
-            $('[data-form-results-target=' + form.attr('id') + ']').addClass('form-results-fail');
-            $('[data-form-results-target=' + form.attr('id') + '] .results-fail').focus();
+
+        if (request_status_code === 'error') {
+            Array.from(document.querySelectorAll('[data-hide-on-submit]')).forEach(function(element) {
+                element.removeAttribute('hidden');
+            });
+
+            console.error('There was an error in processing your request. Please try again later.');
+            alert('There was an error in processing your request. Please try again later.');
         }
     }
 }
