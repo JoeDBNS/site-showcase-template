@@ -42,23 +42,28 @@ progress::-moz-progress-bar {
     border-bottom: 2px solid $brand-third;
     border-bottom: 1px solid #b1b1b1;
     z-index: 3;
+
     .progress-text {
         padding-top: 6px;
     }
+
     .progress-display {
         display: flex;
         position: relative;
         padding: 4px 14px 6px 14px;
+
         .display-text {
             margin: auto 10px auto 0;
             font-size: 1.1rem;
             font-weight: 600;
         }
+
         .display-bar {
             width: 100%;
             border: 1px solid $brand-third;
             border-radius: $radius-element;
             overflow: hidden;
+
             progress {
                 height: 100%;
                 width: 100%;
@@ -67,10 +72,12 @@ progress::-moz-progress-bar {
         .display-toggle {
             margin-left: 8px;
             padding: 0.4rem 0.65rem;
+
             svg {
                 transition: linear 0.1s all;
             }
         }
+
         .display-popup {
             border-style: solid;
             border-color: $brand-third;
@@ -87,10 +94,12 @@ progress::-moz-progress-bar {
             opacity: 0;
             pointer-events: none;
             transition: linear 0.075s all;
+
             .popup-header {
-                padding: 12px 40px 8px 40px;
+                padding: 12px 20px 8px 20px;
                 font-weight: 600;
             }
+
             .popup-page {
                 display: flex;
                 padding: 8px 12px 8px 8px;
@@ -100,13 +109,18 @@ progress::-moz-progress-bar {
                 &:hover {
                     background-color: $brand-gray-200;
                 }
+
                 .page-status {
                     margin: auto 0 auto 10px;
+
                     svg {
+                        position: relative;
+                        top: -1px;
                         width: 24px;
                         height: 24px;
                     }
                 }
+
                 .page-label {
                     width: 100%;
                     margin: auto 0;
@@ -114,6 +128,7 @@ progress::-moz-progress-bar {
                     font-size: 1.1rem;
                     user-select: none;
                 }
+
                 .page-open {
                     margin: auto 0;
                     padding: 2px 10px;
@@ -121,23 +136,27 @@ progress::-moz-progress-bar {
                     border-radius: 4px;
                 }
             }
+
             .popup-page-selected {
                 background-color: $white;
                 &:hover {
                     color: black;
                 }
+
                 .page-status svg path {
                     stroke: white;
                 }
             }
         }
     }
+
     .progress-display-open {
         .display-toggle {
             svg {
                 transform: rotate(180deg);
             }
         }
+
         .display-popup {
             top: 100%;
             opacity: 1;
@@ -150,24 +169,30 @@ progress::-moz-progress-bar {
     .progress-bar-module {
         padding: 0;
         border-right: 1px solid darkgray;
+
         .progress-text {
             padding-top: 6px;
         }
+
         .progress-display {
             .display-toggle {
                 display: none;
             }
+
             .display-popup {
                 border: none;
                 opacity: 1;
                 pointer-events: inherit;
+
                 .popup-header {
-                    padding: 24px 14px 8px 14px;
+                    padding: 24px 11px 8px 11px;
+                    font-size: .95rem;
                 }
+
                 .popup-page {
                     .page-label {
-                        padding: 6px;
-                        font-size: 1rem;
+                        padding: 3px;
+                        font-size: .85rem;
                     }
                 }
             }

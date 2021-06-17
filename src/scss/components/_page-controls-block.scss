@@ -5,21 +5,25 @@
             cursor: pointer;
         }
     }
+
     .controls-page-left {
         svg {
             margin-right: 4px;
         }
     }
+
     .controls-page-right {
         svg {
             margin-left: 4px;
         }
     }
+
     .controls-page-info {
         display: flex;
         padding: 4px;
         border: 1px solid #637183;
         border-radius: 4px;
+
         .info-tab {
             background-color: transparent;
             color: $black;
@@ -35,6 +39,7 @@
                 box-shadow: 0 0 3px $brand-secondary;
             }
         }
+
         .info-tab-selected {
             background-color: $brand-red;
             color: $white;
