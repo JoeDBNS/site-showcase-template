@@ -2,7 +2,8 @@
     grid-area: header;
 	position: sticky;
 	top: 0;
-	z-index: 98;
+    z-index: 98;
+
 	.skip-navigation {
 		position: absolute;
 		top: -2rem;
@@ -17,14 +18,17 @@
 		&:focus {
 			top: 0;
 		}
-	}
+    }
+
 	.navbar {
 		background-color: $brand;
-		padding: 0;
+        padding: 0;
+
 		.navbar-brand {
             padding: 0;
 			margin: 0 0.4rem;
             border-radius: $radius-element;
+
             img {
 				width: 2rem;
 				height: auto;
@@ -32,11 +36,12 @@
                 overflow: hidden;
                 user-select: none;
 			}
-		}
+        }
+
 		.navbar-toggler {
 			padding: 0.84rem 1rem;
 			color: $white;
-			font-size: 1.1rem;
+			font-size: .95rem;
 			border: 2px solid $brand;
 			border-radius: 0;
             transition: linear 0.3s all;
@@ -46,10 +51,12 @@
 				color: $brand;
 				outline: none;
             }
+
             .toggler-text {
                 position: relative;
                 top: 1px;
             }
+
 			svg {
 				position: relative;
 				top: -1px;
@@ -58,15 +65,17 @@
 		}
 		.navbar-toggler-expand {
 			background-color: $white;
-			color: $brand;
+            color: $brand;
+
 			svg {
 				transform: rotate(180deg);
 			}
-		}
+        }
+
 		.navbar-popup {
 			position: absolute;
 			right: 0;
-			top: 41px;
+			top: 47px;
 			background-color: $white;
 			color: $black;
 			border-width: 2px;
@@ -78,35 +87,40 @@
 			transition: linear 0.05s all;
 			pointer-events: none;
 			&:focus, &:hover {
-				top: 41px;
+				top: 47px;
 				opacity: 1;
 				pointer-events: auto;
-			}
+            }
+
 			.navbar-nav .nav-item {
                 border-bottom: 1px solid $brand-gray-400;
+
                 .nav-link {
-                    padding: 10px 70px 10px 30px;
+                    padding: 10px 20px 10px 20px;
                     color: $brand;
-                    font-size: 1.15rem;
-                    line-height: 1.15rem;
+                    font-size: .975rem;
+                    line-height: .975rem;
                     transition: linear 0.025s all;
                     user-select: none;
                     &:focus, &:hover {
                         background-color: $brand-gray-200;
                         outline: none;
                     }
+
                     svg {
                         position: relative;
                         top: -1px;
                     }
+
                     .link-text {
                         margin-left: 4px;
                     }
                 }
 			}
-		}
+        }
+
 		.navbar-popup-show {
-			top: 41px;
+			top: 47px;
 			opacity: 1;
 			pointer-events: auto;
 		}
