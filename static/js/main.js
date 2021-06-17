@@ -221,7 +221,53 @@ function SetupFormFieldMasks(form_id) {
     }
 }
 
-// Forms related functions
+// Cookie management
+function CreateCookie(values) {
+    var date = new Date();
+    var midnight = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59);
+    document.cookie = values + '; expires=' + midnight.toGMTString();
+}
+
+function GetCookie(cookie_name) {
+    var name = cookie_name + '=';
+    var decoded_cookie = decodeURIComponent(document.cookie);
+    var ca = decoded_cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return '';
+}
+
+function CountCurrentCookies() {
+    var cookie_total = 0;
+
+    if (GetCookie('form_submitted_once') !== '') {
+        cookie_total = cookie_total + 1;
+    }
+    if (GetCookie('form_submitted_twice') !== '') {
+        cookie_total = cookie_total + 1;
+    }
+
+    return cookie_total;
+}
+
+function UpdateCookieSubCount() {
+    if (GetCookie('form_submitted_once') === '') {
+        CreateCookie('form_submitted_once=success');
+    }
+    else {
+        if (GetCookie('form_submitted_twice') === '') {
+            CreateCookie('form_submitted_twice=success');
+        }
+    }
+}
+
 function InitFormListeners() {
     if ($('[data-form-submit-target]').length) {
         $('[data-form-submit-target]').each(function() {
