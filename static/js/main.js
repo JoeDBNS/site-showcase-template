@@ -572,3 +572,197 @@ function UpdateFormDisplay(form, request_status_code) {
         }
     }
 }
+
+
+
+
+// Necessary attributes described below:
+//	data-target					:	id|name of the element that you're checking the value of. use id for all except for radios, use name for radios.
+//	data-target-type			:	is optional unless if the target is checkbox or radio. by default will evaluate as text.
+//	data-target-pass			:	a pseudo-array containing the target values that will take positive action. separate values by |. can be * if you want to always pass.
+//	data-target-add				:	is optional. contains class to add|remove based on pass value. if data-target-add|data-target-remove|data-target-set-required not found, by default will toggle display block|none.
+//	data-target-remove			:	is optional. contains class to add|remove based on pass value. if data-target-add|data-target-remove|data-target-set-required not found, by default will toggle display block|none.
+//	data-target-set-required	:	is optional. will add or remove 'required' attribute based on pass value. if data-target-add|data-target-remove|data-target-set-required not found, by default will toggle display block|none.
+
+function SetReferenceListeners() {
+	Array.from(document.querySelectorAll('[data-target-pass]')).forEach(function(src_element) {
+		switch (src_element.getAttribute('data-target-type')) {
+			case 'radio':
+				Array.from(document.querySelectorAll("[name=" + src_element.getAttribute('data-target') + "]")).forEach(function(radio_element) {
+					radio_element.addEventListener('change', function(event) {
+						var trgt_element = document.querySelector("[name=" + src_element.getAttribute('data-target') + "]:checked");
+
+						if (src_element.getAttribute('data-target-pass').split('|').indexOf(trgt_element.value) !== -1 || src_element.getAttribute('data-target-pass').split('|').indexOf('*') !== -1) {
+							if (src_element.hasAttribute('data-target-add') || src_element.hasAttribute('data-target-remove') || src_element.hasAttribute('data-target-set-required')) {
+								if (src_element.hasAttribute('data-target-add')) {
+									src_element.classList.add(src_element.getAttribute('data-target-add'));
+								}
+								if (src_element.hasAttribute('data-target-remove')) {
+									src_element.classList.remove(src_element.getAttribute('data-target-remove'));
+								}
+								if (src_element.hasAttribute('data-target-set-required')) {
+									src_element.setAttribute('required', true);
+								}
+							}
+							else {
+								src_element.style.display = '';
+                            }
+                            MassSetRequiredStatus('add', src_element);
+                            SetupInputListeners(src_element.querySelectorAll('input, textarea, select'));
+						}
+						else {
+							if (src_element.hasAttribute('data-target-add') || src_element.hasAttribute('data-target-remove') || src_element.hasAttribute('data-target-set-required')) {
+								if (src_element.hasAttribute('data-target-add')) {
+									src_element.classList.remove(src_element.getAttribute('data-target-add'));
+								}
+								if (src_element.hasAttribute('data-target-remove')) {
+									src_element.classList.add(src_element.getAttribute('data-target-remove'));
+								}
+								if (src_element.hasAttribute('data-target-set-required')) {
+									src_element.removeAttribute('required');
+								}
+							}
+							else {
+								src_element.style.display = 'none';
+                            }
+                            MassSetRequiredStatus('remove', src_element);
+                            MassClearFieldValues(src_element);
+						}
+					});
+				});
+				break;
+
+			case 'checkbox':
+				document.getElementById(src_element.getAttribute('data-target')).addEventListener('change', function(event) {
+					var trgt_element = event.target;
+
+					if (src_element.getAttribute('data-target-pass').split('|').indexOf(trgt_element.checked.toString()) !== -1 || src_element.getAttribute('data-target-pass').split('|').indexOf('*') !== -1) {
+						if (src_element.hasAttribute('data-target-add') || src_element.hasAttribute('data-target-remove') || src_element.hasAttribute('data-target-set-required')) {
+							if (src_element.hasAttribute('data-target-add')) {
+								src_element.classList.add(src_element.getAttribute('data-target-add'));
+							}
+							if (src_element.hasAttribute('data-target-remove')) {
+								src_element.classList.remove(src_element.getAttribute('data-target-remove'));
+							}
+							if (src_element.hasAttribute('data-target-set-required')) {
+								src_element.setAttribute('required', true);
+							}
+						}
+						else {
+							src_element.style.display = '';
+                        }
+                        MassSetRequiredStatus('add', src_element);
+                        SetupInputListeners(src_element.querySelectorAll('input, textarea, select'));
+					}
+					else {
+						if (src_element.hasAttribute('data-target-add') || src_element.hasAttribute('data-target-remove') || src_element.hasAttribute('data-target-set-required')) {
+							if (src_element.hasAttribute('data-target-add')) {
+								src_element.classList.remove(src_element.getAttribute('data-target-add'));
+							}
+							if (src_element.hasAttribute('data-target-remove')) {
+								src_element.classList.add(src_element.getAttribute('data-target-remove'));
+							}
+							if (src_element.hasAttribute('data-target-set-required')) {
+								src_element.removeAttribute('required');
+							}
+						}
+						else {
+							src_element.style.display = 'none';
+                        }
+                        MassSetRequiredStatus('remove', src_element);
+                        MassClearFieldValues(src_element);
+					}
+				});
+				break;
+
+			default:
+				document.getElementById(src_element.getAttribute('data-target')).addEventListener('change', function(event) {
+                    var trgt_element = event.target;
+
+					if (src_element.getAttribute('data-target-pass').split('|').indexOf(trgt_element.value.toString()) !== -1 || src_element.getAttribute('data-target-pass').split('|').indexOf('*') !== -1) {
+						if (src_element.hasAttribute('data-target-add') || src_element.hasAttribute('data-target-remove') || src_element.hasAttribute('data-target-set-required')) {
+							if (src_element.hasAttribute('data-target-add')) {
+								src_element.classList.add(src_element.getAttribute('data-target-add'));
+							}
+							if (src_element.hasAttribute('data-target-remove')) {
+								src_element.classList.remove(src_element.getAttribute('data-target-remove'));
+							}
+							if (src_element.hasAttribute('data-target-set-required')) {
+								src_element.setAttribute('required', true);
+							}
+						}
+						else {
+							src_element.style.display = '';
+                        }
+                        MassSetRequiredStatus('add', src_element);
+                        SetupInputListeners(src_element.querySelectorAll('input, textarea, select'));
+					}
+					else {
+						if (src_element.hasAttribute('data-target-add') || src_element.hasAttribute('data-target-remove') || src_element.hasAttribute('data-target-set-required')) {
+							if (src_element.hasAttribute('data-target-add')) {
+								src_element.classList.remove(src_element.getAttribute('data-target-add'));
+							}
+							if (src_element.hasAttribute('data-target-remove')) {
+								src_element.classList.add(src_element.getAttribute('data-target-remove'));
+							}
+							if (src_element.hasAttribute('data-target-set-required')) {
+								src_element.removeAttribute('required');
+							}
+						}
+						else {
+							src_element.style.display = 'none';
+                        }
+                        MassSetRequiredStatus('remove', src_element);
+                        MassClearFieldValues(src_element);
+					}
+				});
+				break;
+		}
+	});
+}
+
+function MassSetRequiredStatus(action, element) {
+    if (action === 'add') {
+        Array.from(element.querySelectorAll('.input-set-required-nocheck')).forEach((elm) => {
+            elm.classList.remove('input-set-required-nocheck');
+            elm.classList.add('input-set-required');
+        });
+
+        Array.from(element.querySelectorAll('[data-required-nocheck]')).forEach((elm) => {
+            elm.removeAttribute('data-required-nocheck');
+            elm.setAttribute('required', 'true');
+        });
+    }
+    else if (action === 'remove') {
+        Array.from(element.querySelectorAll('.input-set-failed')).forEach((elm) => {
+            elm.classList.remove('input-set-failed');
+        });
+
+        Array.from(element.querySelectorAll('.input-set-required')).forEach((elm) => {
+            elm.classList.remove('input-set-required');
+            elm.classList.add('input-set-required-nocheck');
+        });
+
+        Array.from(element.querySelectorAll('[required]')).forEach((elm) => {
+            elm.removeAttribute('required');
+            elm.setAttribute('data-required-nocheck', 'true');
+        });
+    }
+}
+
+function MassClearFieldValues(element) {
+    // Clear radio inputs
+    Array.from(element.querySelectorAll('input[type="radio"]:checked')).forEach((elm) => {
+        elm.removeAttribute('checked');
+    });
+
+    // Clear checkbox inputs
+    Array.from(element.querySelectorAll('input[type="checkbox"]')).forEach((elm) => {
+        elm.checked = false;
+    });
+
+    // Clear text inputs, textareas, and selects
+    Array.from(element.querySelectorAll('input, textarea, select')).forEach((elm) => {
+        elm.value = '';
+    });
+}
