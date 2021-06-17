@@ -25,7 +25,6 @@ window.addEventListener('load', function() {
     }
 });
 
-
 function InitNavigationMenu() {
     let nav_toggler = document.querySelector('.navbar-toggler');
     let nav_popup = document.querySelector('.navbar-popup');
@@ -63,7 +62,6 @@ function InitNavigationMenu() {
         }
     });
 }
-
 
 function InitFormProgressDisplay() {
     let progress_module = document.querySelector('.progress-bar-module');
@@ -103,7 +101,6 @@ function InitFormProgressDisplay() {
     });
 }
 
-
 function InitFormProgressMarkers() {
     Array.from(document.querySelectorAll('.progress-module .step-text')).forEach(function(element) {
         element.addEventListener('click', function(event) {
@@ -131,7 +128,6 @@ function InitFormProgressMarkers() {
     });
 }
 
-
 function InitSelfHelpMenu() {
     Array.from(document.querySelectorAll('.help-topic .topic-header')).forEach((selected_topic) => {
         selected_topic.addEventListener('click', (event) => {
@@ -146,7 +142,6 @@ function InitSelfHelpMenu() {
         });
     });
 }
-
 
 function InitFormPreSelector() {
     Array.from(document.querySelectorAll('.select-card')).forEach((card) => {
@@ -164,14 +159,12 @@ function InitFormPreSelector() {
     });
 }
 
-
 function InitFormDemoFunc() {
     var type_selector = document.querySelector('#type');
     var type_sections = document.querySelectorAll('[data-type-select]');
     var type_section_birthday = document.querySelector('[data-type-select="birthday"]');
     var type_section_military = document.querySelector('[data-type-select="military"]');
-    
-    
+
     type_selector.addEventListener('change', (event) => {
         Array.from(type_sections).forEach((section) => {
             section.setAttribute('hidden', 'true');
@@ -185,7 +178,7 @@ function InitFormDemoFunc() {
             case 'birthday':
                 type_section_birthday.removeAttribute('hidden');
                 break;
-        
+
             default:
                 break;
         }
