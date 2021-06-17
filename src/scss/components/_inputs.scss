@@ -11,6 +11,10 @@ legend {
     transition: linear 0.1s box-shadow;
 }
 
+fieldset {
+    border-radius: $radius-input;
+}
+
 input[type="text"],
 input[type="search"],
 input[type="number"],
@@ -24,9 +28,9 @@ input[type="datetime-local"] {
     background-color: $white;
     width: 100%;
     padding: 4px 0 4px 10px;
-    border: 1px solid #c1c1c1;
+    border: 1px solid #d4d4d4;
     border-radius: $radius-input;
-    font-size: 1.05rem;
+    font-size: 1rem;
     transition: linear 0.1s box-shadow;
     // box-shadow: 1px 1px 1px #e4e4e4 inset;
     &:focus {
@@ -37,27 +41,33 @@ input[type="datetime-local"] {
         // box-shadow: 0 2px 2px $brand-flair;
     }
 }
+
 textarea {
     @extend input[type="text"];
     resize: vertical;
     min-height: 7rem;
 }
+
 select {
     @extend input[type="text"];
-    padding: 0.425rem 0.5rem;
+    padding: 0.375rem 0.5rem;
 }
+
 input[type="file"] {
     @extend input[type="text"];
     padding: 0.3rem 0.25rem;
 }
+
 input[type="color"] {
     @extend input[type="text"];
     height: 2.5rem;
 }
+
 input[type="range"] {
     width: 100%;
     padding: 0.35rem 0;
 }
+
 input[type="checkbox"],
 input[type="radio"] {
     width: 0;
@@ -75,20 +85,25 @@ input[type="radio"] {
         }
     }
 }
+
 input[type="checkbox"] {
     + label > .label-box-display {
         border-radius: $radius-input;
     }
 }
+
 input[type="radio"] {
     + label > .label-box-display {
         border-radius: $radius-input-radio;
     }
 }
+
 .input-set {
-    margin: 14px 0;
+    margin: 7px 0;
 }
-.input-set-required label::after {
+
+.input-set-required label::after,
+.input-set-required legend::after {
     content: "*";
     position: relative;
     left: 6px;
@@ -96,22 +111,93 @@ input[type="radio"] {
     font-size: .9rem;
     color: #d40000;
 }
+
+.input-set-required .set-fieldset label::after {
+    content: "";
+    position: relative;
+    left: 0;
+    top: 0;
+    font-size: .85rem;
+    color: black;
+}
+
+.input-set-failed {
+    input[type="text"],
+    input[type="search"],
+    input[type="number"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="password"],
+    input[type="url"],
+    input[type="time"],
+    input[type="date"],
+    input[type="datetime-local"],
+    textarea,
+    select,
+    fieldset .fieldset-inputs {
+        border-color: red;
+    }
+}
+
 .input-set-singlecheck {
     margin-top: -20px;
 }
+
 .label-box-display {
     background-color: $white;
     display: inline-block;
     border: 1px solid $gray;
     user-select: none;
     cursor: pointer;
+
     svg {
         opacity: 0;
         transition: linear 0.05s all;
     }
 }
+
 .label-text {
     position: relative;
     top: 3px;
     margin-left: 0.25rem;
+}
+
+.set-fieldset-radio-horizontal {
+    legend {
+        margin-top: 10px;
+    }
+
+    .fieldset-inputs {
+        border-style: solid;
+        border-width: 1px;
+        border-color: transparent;
+
+        label {
+            background-color: #f4f4f4;
+            margin-top: 2px;
+            padding: 4px 4px 6px 4px;
+            border: 1px solid;
+            border-color: #d4d4d4;
+            box-shadow: 0 0 2px #d4d4d4 inset;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        input[type="radio"] {
+            width: 0;
+            height: 0;
+            visibility: visible;
+            &:checked {
+                + label {
+                    background-color: white;
+                    box-shadow: 0 0 0 1px #c4c4c4;
+                }
+            }
+            &:focus {
+                + label {
+                    box-shadow: 0 0 0 1px #073f54;
+                }
+            }
+        }
+    }
 }
