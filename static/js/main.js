@@ -24,6 +24,70 @@ window.addEventListener('load', function() {
     }
 });
 
+function InitSelfHelpMenu() {
+    Array.from(document.querySelectorAll('.help-topic .topic-header')).forEach((selected_topic) => {
+        selected_topic.addEventListener('click', (event) => {
+            var open_topic = document.querySelector('.help-topic-expanded');
+            if (open_topic) {
+                open_topic.classList.remove('help-topic-expanded');
+            }
+
+            if (open_topic !== selected_topic.parentElement) {
+                selected_topic.parentElement.classList.add('help-topic-expanded');
+            }
+        });
+    });
+}
+
+function InitFormPreSelector() {
+    Array.from(document.querySelectorAll('.select-card')).forEach((card) => {
+        card.addEventListener('click', (event) => {
+            document.querySelector('.form-select-module').setAttribute('hidden', 'true');
+            document.querySelector('.form-module').removeAttribute('hidden');
+            window.scrollTo(0, 0);
+        });
+    });
+
+    document.querySelector('.form-back-button').addEventListener('click', () => {
+        document.querySelector('.form-module').setAttribute('hidden', 'true');
+        document.querySelector('.form-select-module').removeAttribute('hidden');
+        window.scrollTo(0, 0);
+    });
+}
+
+function InitFormDemoFunc() {
+    var type_selector = document.querySelector('#type');
+    var type_sections = document.querySelectorAll('[data-type-select]');
+    var type_section_birthday = document.querySelector('[data-type-select="birthday"]');
+    var type_section_military = document.querySelector('[data-type-select="military"]');
+
+    type_selector.addEventListener('change', (event) => {
+        Array.from(type_sections).forEach((section) => {
+            section.setAttribute('hidden', 'true');
+        });
+
+        switch (type_selector.value) {
+            case 'military':
+                type_section_military.removeAttribute('hidden');
+                break;
+
+            case 'birthday':
+                type_section_birthday.removeAttribute('hidden');
+                break;
+
+            default:
+                break;
+        }
+        document.querySelector('.form-select-module').setAttribute('hidden', 'true');
+        document.querySelector('.form-module').removeAttribute('hidden');
+    });
+
+    document.querySelector('.form-back-button').addEventListener('click', () => {
+        document.querySelector('.form-module').setAttribute('hidden', 'true');
+        document.querySelector('.form-select-module').removeAttribute('hidden');
+    });
+}
+
 function InitNavigationMenu() {
     let nav_toggler = document.querySelector('.navbar-toggler');
     let nav_popup = document.querySelector('.navbar-popup');
@@ -124,70 +188,6 @@ function InitFormProgressMarkers() {
                 }
             }
         });
-    });
-}
-
-function InitSelfHelpMenu() {
-    Array.from(document.querySelectorAll('.help-topic .topic-header')).forEach((selected_topic) => {
-        selected_topic.addEventListener('click', (event) => {
-            var open_topic = document.querySelector('.help-topic-expanded');
-            if (open_topic) {
-                open_topic.classList.remove('help-topic-expanded');
-            }
-
-            if (open_topic !== selected_topic.parentElement) {
-                selected_topic.parentElement.classList.add('help-topic-expanded');
-            }
-        });
-    });
-}
-
-function InitFormPreSelector() {
-    Array.from(document.querySelectorAll('.select-card')).forEach((card) => {
-        card.addEventListener('click', (event) => {
-            document.querySelector('.form-select-module').setAttribute('hidden', 'true');
-            document.querySelector('.form-module').removeAttribute('hidden');
-            window.scrollTo(0, 0);
-        });
-    });
-
-    document.querySelector('.form-back-button').addEventListener('click', () => {
-        document.querySelector('.form-module').setAttribute('hidden', 'true');
-        document.querySelector('.form-select-module').removeAttribute('hidden');
-        window.scrollTo(0, 0);
-    });
-}
-
-function InitFormDemoFunc() {
-    var type_selector = document.querySelector('#type');
-    var type_sections = document.querySelectorAll('[data-type-select]');
-    var type_section_birthday = document.querySelector('[data-type-select="birthday"]');
-    var type_section_military = document.querySelector('[data-type-select="military"]');
-
-    type_selector.addEventListener('change', (event) => {
-        Array.from(type_sections).forEach((section) => {
-            section.setAttribute('hidden', 'true');
-        });
-
-        switch (type_selector.value) {
-            case 'military':
-                type_section_military.removeAttribute('hidden');
-                break;
-
-            case 'birthday':
-                type_section_birthday.removeAttribute('hidden');
-                break;
-
-            default:
-                break;
-        }
-        document.querySelector('.form-select-module').setAttribute('hidden', 'true');
-        document.querySelector('.form-module').removeAttribute('hidden');
-    });
-
-    document.querySelector('.form-back-button').addEventListener('click', () => {
-        document.querySelector('.form-module').setAttribute('hidden', 'true');
-        document.querySelector('.form-select-module').removeAttribute('hidden');
     });
 }
 
