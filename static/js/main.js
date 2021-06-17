@@ -1,3 +1,5 @@
+// Confix Variables
+let env_submit_host = 'https://gov011mcrmda501.mieog.state.mi.us';
 
 
 // OnLoad Run
@@ -511,7 +513,8 @@ function ReplaceBadUrlParamCharacters(fix_string) {
 }
 
 function ProcessFormSubmit(form, form_submit_json_string) {
-    let url = env_submit_host + '/GovServices/SaveJsonAndFileData?JsonLogData=' + encodeURI(form_submit_json_string);
+    // let url = env_submit_host + '/GovServices/SaveJsonAndFileData?JsonLogData=' + encodeURI(form_submit_json_string);
+    let url = '';
 
     let request = new XMLHttpRequest();
 
