@@ -9,7 +9,7 @@ window.addEventListener('load', function() {
     
     if (window.location.pathname.toLowerCase().indexOf('/form-long.html') !== -1) {
         // InitFormListeners();
-        // SetupFormFieldMasks('form-long');
+        SetupFormFieldMasks('form-long');
         // SetReferenceListeners();
 
         // InitFormProgressMarkers();
