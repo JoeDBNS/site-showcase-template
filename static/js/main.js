@@ -210,6 +210,22 @@ function SetupFormFieldMasks(form_id) {
                             }
                         );
                         break;
+
+                    case 'ssn':
+                        IMask(
+                            field, {
+                                mask: '000-00-0000'
+                            }
+                        );
+                        break;
+
+                    case 'mi-license':
+                        IMask(
+                            field, {
+                                mask: 'a 000 000 000 000'
+                            }
+                        );
+                        break;
                 
                     default:
                         console.log('Mask was not specified for:', field)
