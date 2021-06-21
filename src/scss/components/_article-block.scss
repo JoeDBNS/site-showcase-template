@@ -1,7 +1,7 @@
 .article-module {
     article {
         color: $brand;
-        padding: 2rem 5rem;
+        padding: 4rem 5rem 2rem 5rem;
         header {
             h1 {
                 margin-bottom: 3rem;
@@ -9,16 +9,22 @@
         }
         h2 {
             margin-top: 3rem;
+            font-size: 1.65rem;
         }
         ol {
             li {
                 margin: 10px auto;
+                font-size: .875rem;
             }
         }
         ul {
             li {
                 margin: 5px auto;
+                font-size: .875rem;
             }
+        }
+        p {
+            font-size: .875rem;
         }
     }
     .article-image {
