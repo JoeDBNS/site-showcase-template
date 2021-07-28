@@ -591,6 +591,20 @@ function UpdateFormDisplay(form, request_status_code) {
     }
 }
 
+function FindFormPageByField(field) {
+    var field_parent = field.parentElement;
+    var form_page = null;
+
+    while (form_page === null && field_parent.tagName !== 'FORM') {
+        if (field_parent.hasAttribute('data-page-number')) {
+            form_page = field_parent.getAttribute('data-page-number');
+        }
+        field_parent = field_parent.parentElement;
+    }
+
+    return form_page;
+}
+
 
 
 
