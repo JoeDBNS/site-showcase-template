@@ -101,11 +101,14 @@ progress::-moz-progress-bar {
             }
 
             .popup-page {
+                width: 100%;
                 display: flex;
                 padding: 8px 12px 8px 8px;
+                border: none;
                 border-bottom: 1px solid #cccccc;
                 cursor: pointer;
-                transition: linear 0.025s all;
+                color: black;
+                text-align: left;
                 &:hover {
                     background-color: $brand-gray-200;
                 }
@@ -140,7 +143,7 @@ progress::-moz-progress-bar {
             .popup-page-selected {
                 background-color: $white;
                 &:hover {
-                    color: black;
+                    background-color: $white;
                 }
 
                 .page-status svg path {

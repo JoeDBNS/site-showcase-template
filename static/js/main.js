@@ -14,6 +14,7 @@ window.addEventListener('load', function() {
 
         // InitFormProgressMarkers();
         InitFormProgressDisplay();
+        SetupFormPageModule('form-long');
     }
 
     if (window.location.pathname.toLowerCase().indexOf('/form-short.html') !== -1) {
@@ -603,6 +604,38 @@ function FindFormPageByField(field) {
     }
 
     return form_page;
+}
+
+function OpenFormPage(form, page) {
+    var page_module = document.querySelector('.progress-bar-module');
+
+    var current_page = form.querySelector('[data-page-number].form-page-active');
+    var next_page = form.querySelector('[data-page-number="' + page + '"]');
+
+    if (next_page) {
+        page_module.querySelector('.popup-page-selected').classList.remove('popup-page-selected');
+        page_module.querySelector('[data-page-number="' + page + '"]').classList.add('popup-page-selected');
+
+        current_page.classList.remove('form-page-active');
+        current_page.classList.add('form-page-inactive');
+
+        next_page.classList.add('form-page-active');
+        next_page.classList.remove('form-page-inactive');
+    }
+    else {
+        console.log('Form does not contain page: ' + page);
+    }
+}
+
+function SetupFormPageModule(form_id) {
+    var form = document.querySelector('#' + form_id);
+    var page_module = document.querySelector('.progress-bar-module');
+
+    Array.from(page_module.querySelectorAll('.popup-page')).forEach(function(element) {
+        element.addEventListener('click', function() {
+            OpenFormPage(form, element.getAttribute('data-page-number'));
+        });
+    });
 }
 
 
