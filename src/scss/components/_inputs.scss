@@ -201,3 +201,16 @@ input[type="radio"] {
         }
     }
 }
+
+.set-fieldset-no-marker {
+    .fieldset-inputs {
+        label {
+            margin-top: 0px;
+            text-align: center;
+
+            .label-text {
+                margin-left: 0;
+            }
+        }
+    }
+}

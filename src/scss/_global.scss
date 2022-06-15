@@ -34,6 +34,7 @@ body {
 
 main {
     grid-area: main;
+    min-height: 75vh;
 
     .main-header {
         height: 2rem;
