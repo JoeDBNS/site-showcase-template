@@ -43,23 +43,23 @@ input[type="datetime-local"] {
 }
 
 textarea {
-    @extend input[type="text"];
+    @extend input, [type=text];
     resize: vertical;
     min-height: 7rem;
 }
 
 select {
-    @extend input[type="text"];
+    @extend input, [type=text];
     padding: 0.375rem 0.5rem;
 }
 
 input[type="file"] {
-    @extend input[type="text"];
+    @extend input, [type=text];
     padding: 0.3rem 0.25rem;
 }
 
 input[type="color"] {
-    @extend input[type="text"];
+    @extend input, [type=text];
     height: 2.5rem;
 }
 

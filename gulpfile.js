@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var sass = require('gulp-sass');
+var sass = require('gulp-sass')(require('sass'));
 var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('sass', function() {
@@ -10,7 +10,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('./src/scss/**/*.scss', ['sass']);
+  gulp.watch('./src/scss/**/*.scss', gulp.series('sass'));
 });
 
-gulp.task('default', ['sass']);
+gulp.task('build', gulp.series('sass'));
